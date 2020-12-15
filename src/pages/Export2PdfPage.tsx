@@ -24,7 +24,6 @@ const Export2PdfPage = () => {
 
         doc.text("Assigned tasks waiting to be accepted", 14, 20);
         doc.autoTable(tableColumn, assignedTasksRows, { startY: 25 });
-
                 const tasksWaitingRows:any = []
                 let tasksWaiting = tasks.filter(x => x.createdForId === infonetUserId && x.taskEventTypeId === "5aa40b3a-43e7-4ce0-83b8-5f4e15b90124")
                 for (let i = 0; i < tasksWaiting.length; i++){
