@@ -17,11 +17,11 @@ const EducationForm = () => {
     const [school, setSchool] = useState(useSelector((state:TRootReducer)=> state.globalState.education.school))
     const [startDate, setStartDate] = useState(useSelector((state:TRootReducer)=> state.globalState.education.startDate))
     const [endDate, setEndDate] = useState(useSelector((state:TRootReducer)=> state.globalState.education.endDate))
-    const [description, setDescription] = useState(useSelector((state:TRootReducer)=> state.globalState.education.city))
+    const [description, setDescription] = useState(useSelector((state:TRootReducer)=> state.globalState.education.description))
     const [id] = useState(useSelector((state:TRootReducer)=> state.globalState.education.id) || (generateGuidG4() + generateGuidG4() + "-" + generateGuidG4() + "-4" + generateGuidG4().substr(0,3) + "-" + generateGuidG4() + "-" + generateGuidG4() + generateGuidG4() + generateGuidG4()).toLowerCase())
     const idState = useSelector((state:TRootReducer)=> state.globalState.education.id)
     const [warning, showWarning] = useState(false)
-    
+    const [present, setPresent] = useState(useSelector((state:TRootReducer)=> state.globalState.education.present))
     function handleSubmit(e:any){
         
         e.preventDefault();
@@ -32,7 +32,8 @@ const EducationForm = () => {
             startDate: startDate,
             endDate: endDate,
             description: description,
-            degree: degree
+            degree: degree,
+            present: present
         }
         if (school !== '' && city !== '' && degree !== ''){        
             dispatch(submitEducation(education))
@@ -65,13 +66,17 @@ const EducationForm = () => {
                 />
                 
                 <DatePicker
+                    disabled={present}
                     selected={endDate}
                     onChange={(date: Date) => setEndDate(date)}
+                    dateFormat="MMMM yyyy"
                     showMonthDropdown
                     showYearDropdown
+                    showMonthYearPicker
                     dropdownMode="select"
-                    dateFormat="MMMM yyyy"
                 />
+                <label>Present</label>
+                <input type="checkbox" checked={present} onChange={()=> setPresent(!present)}/> 
                 <br/>
                 <label>Description</label><br />
                 <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={description} onChange={(event:any) => setDescription(event.target.value)} /><br />

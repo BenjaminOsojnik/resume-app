@@ -18,7 +18,8 @@ export type TGlobalState = {
     isWorkExperienceFormVisible: boolean,
     isEducationFormVisible: boolean,
     isHobbyFormVisible: boolean,
-    isSkillFormVisible: boolean
+    isSkillFormVisible: boolean,
+    resumeObjective: string
 }
 
 export type TWorkExperience = {
@@ -28,7 +29,8 @@ export type TWorkExperience = {
     employer: string,
     startDate: Date,
     endDate: Date
-    description: string
+    description: string,
+    present: boolean
 }
 
 export type TEducation = {
@@ -38,7 +40,8 @@ export type TEducation = {
     school: string,
     startDate: Date,
     endDate: Date,
-    description: string
+    description: string,
+    present: boolean
 }
 
 export type THobby = {

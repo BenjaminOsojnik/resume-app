@@ -16,6 +16,7 @@ import { SUBMIT_BASIC_INFORMATION,
     DELETE_SKILL_ACTION,
     SUBMIT_SKILL,
     IS_SKILL_FORM_VISIBLE,
+    RESUME_OBJECTIVE_ACTION,
     globalActionTypes} from '../actions/globalActionTypes'
 import {TEducation, TGlobalState, THobby, TSkill, TWorkExperience} from '../../types/types'
 
@@ -36,7 +37,8 @@ const initialState: TGlobalState = {
         employer: '',
         endDate: new Date(),
         startDate: new Date(),
-        id: undefined
+        id: undefined,
+        present: false
     },
     educations: [],
     education: {
@@ -46,7 +48,8 @@ const initialState: TGlobalState = {
         school: '',
         startDate: new Date(),
         endDate: new Date(),
-        description: ''
+        description: '',
+        present: false
     },
     hobbies: [],
     hobby: {
@@ -59,6 +62,7 @@ const initialState: TGlobalState = {
         skill: '',
         level: 'SelectLevel'
     },
+    resumeObjective: '',
     isWorkExperienceFormVisible: false,
     isEducationFormVisible: false,
     isHobbyFormVisible: false,
@@ -72,7 +76,8 @@ const emptyWorkExperience:TWorkExperience = {
         employer: '',
         endDate: new Date(),
         startDate: new Date(),
-        id: undefined
+        id: undefined,
+        present: false
 }
 
 const emptyEducation: TEducation = {
@@ -82,7 +87,8 @@ const emptyEducation: TEducation = {
         school: '',
         startDate: new Date(),
         endDate: new Date(),
-        description: ''
+        description: '',
+        present: false
 }
 
 const emptyHobby: THobby = {
@@ -113,6 +119,9 @@ export default function globalReducer(state: TGlobalState = initialState, action
             }
         }
 
+        case RESUME_OBJECTIVE_ACTION: {
+            return {...state, resumeObjective: action.resumeObjective}
+        }
         case EDIT_WORK_EXPERIENCE_ACTION: {
             let index = state.workExperiences.map(function(x) {return x.id}).indexOf(action.id)
             let workExperienceTemp = state.workExperiences[index]
@@ -405,6 +414,13 @@ export const SetSkillFormVisilbe = (visibility: boolean): globalActionTypes => {
     return {
         type: IS_SKILL_FORM_VISIBLE,
         visibility
+    }
+}
+
+export const SetResumeObjective = (resumeObjective: string): globalActionTypes => {
+    return {
+        type: RESUME_OBJECTIVE_ACTION,
+        resumeObjective
     }
 }
 

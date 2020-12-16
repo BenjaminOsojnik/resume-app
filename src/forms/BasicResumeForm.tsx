@@ -41,7 +41,7 @@ const BasicResumeForm = () => {
                 <form onSubmit={handleSubmit}>
                     {profileImage !== '' && <img src={profileImage} style={{width: 50, height: 50}} />}
                     <label>Image</label><br />
-                    <input type="file" onChange={handleFileSelect}/><br />
+                    <input type="file"  accept="image/x-png,image/gif,image/jpeg" onChange={handleFileSelect}/><br />
                     <label>First name*</label><br />
                     <input type="text" className={`${warning && firstName === '' ? 'warningInput' : '' }`} value={firstName} onChange={(event) => setFirstName(event.target.value)} /><br />
                     <label>Last name*</label><br />

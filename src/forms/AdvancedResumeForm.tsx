@@ -2,7 +2,7 @@ import React, {Fragment, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootReducer } from '../store/reducers'
 import { useHistory } from 'react-router-dom'
-import {editHobby, SetWorkExperienceFormVisible, editWorkExperience, editEducation, SetEducationFormVisible, SetHobbyFormVisible, editSkill, SetSkillFormVisilbe} from '../store/reducers/globalReducer'
+import {editHobby, SetWorkExperienceFormVisible, editWorkExperience, editEducation, SetEducationFormVisible, SetHobbyFormVisible, editSkill, SetSkillFormVisilbe, SetResumeObjective} from '../store/reducers/globalReducer'
 import TextareaAutosize from 'react-autosize-textarea'
 import WorkExperienceForm from './WorkExperienceForm'
 import EducationForm from './EducationForm'
@@ -12,26 +12,16 @@ import SkillForm from './SkillForm'
 const AdvancedResumeForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
-    const [resumeObjective, setResumeObjective] = useState('')
+    const resumeObjective = useSelector((state:TRootReducer) => state.globalState.resumeObjective)
     const workExperiences = useSelector((state:TRootReducer) => state.globalState.workExperiences)
     const educations = useSelector((state:TRootReducer) => state.globalState.educations)
     const hobbies = useSelector((state:TRootReducer) => state.globalState.hobbies)
     const skills = useSelector((state:TRootReducer) => state.globalState.skills)
-    const [warning, showWarning] = useState(false)
     const isWorkExperienceFormVisible = useSelector((state:TRootReducer) => state.globalState.isWorkExperienceFormVisible)
     const isEducationFormVisible = useSelector((state:TRootReducer) => state.globalState.isEducationFormVisible)
     const isHobbyFormVisible = useSelector((state:TRootReducer) => state.globalState.isHobbyFormVisible)
     const isSkillFormVisible = useSelector((state:TRootReducer) => state.globalState.isSkillFormVisible)
-    // function handleSubmit(e:any){
-    //     e.preventDefault();
-    //     if (firstName !== '' && lastName !== '' && email.includes('@' && '.')){
-    //         dispatch(SubmitBasicInformation(firstName, lastName, email, phoneNumber,address,zipCode,city, profileImage ))
-    //         history.push('/advanced')
-    //     }
-    //     else {
-    //         showWarning(true)
-    //     }
-    // }
+
     return (
         <Fragment>
             <div>
@@ -39,7 +29,7 @@ const AdvancedResumeForm = () => {
                 <form onSubmit={e => { e.preventDefault() }}>
                     <div>
                         <h3>Resume objective</h3><br />
-                        <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={resumeObjective} onChange={(event:any) => setResumeObjective(event.target.value)} /><br />
+                        <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={resumeObjective} onChange={(event:any) => dispatch(SetResumeObjective(event.target.value))} /><br />
                     </div>
                     <br />
                     <br />

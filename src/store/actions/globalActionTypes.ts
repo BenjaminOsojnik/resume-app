@@ -17,6 +17,12 @@ export const DELETE_SKILL_ACTION = 'DELETE_SKILL_ACTION'
 export const SUBMIT_SKILL = 'SUBMIT_SKILL'
 export const EDIT_SKILL_ACTION = 'EDIT_SKILL_ACTION'
 export const IS_SKILL_FORM_VISIBLE = 'IS_SKILL_FORM_VISIBLE'
+export const RESUME_OBJECTIVE_ACTION = 'RESUME_OBJECTIVE_ACTION'
+
+interface resumeObjectiveAction {
+    type: typeof RESUME_OBJECTIVE_ACTION,
+    resumeObjective: string
+}
 
 interface editWorkExperienceAction {
     type: typeof EDIT_WORK_EXPERIENCE_ACTION,
@@ -139,3 +145,4 @@ export type globalActionTypes =
     |   submitSkill
     |   editSkill
     |   isSkillFormVisible
+    |   resumeObjectiveAction
