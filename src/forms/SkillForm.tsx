@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react'
 import "react-datepicker/dist/react-datepicker.css"
 import {generateGuidG4} from '../functions/generateGuidS4'
-import {deleteSkill, SetHobbyFormVisible, SetSkillFormVisilbe, submitSkill} from '../store/reducers/globalReducer'
+import {deleteSkill, SetSkillFormVisilbe, submitSkill} from '../store/reducers/globalReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootReducer } from '../store/reducers'
 
