@@ -112,9 +112,9 @@ const Export2PdfPage = () => {
         doc.setFont('SF-Pro', "normal")
         doc.setTextColor(80)
         doc.setFontSize(10)
+        y = y + 5
         if (storeState.resumeObjective !== ''){
             doc.setTextColor(160)
-            y = y + 5
             let resumeObjective = doc.splitTextToSize(storeState.resumeObjective, 125)
             doc.text(resumeObjective, 80, y)
             let resumeObjectiveDimensions = doc.getTextDimensions(resumeObjective)
