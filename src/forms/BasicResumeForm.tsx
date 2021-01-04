@@ -116,7 +116,7 @@ const BasicResumeForm = () => {
 
                     <br />
 
-                    <button className="next-btn">Next</button>
+                    <button className="next-btn" onClick={handleSubmit}>Next</button>
                 </form>
             </div>
         </div>

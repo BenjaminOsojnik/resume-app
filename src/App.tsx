@@ -13,6 +13,7 @@ function App() {
           <Route exact path="/" component={BasicResumeForm} />
           <Route exact path="/advanced" component={AdvancedResumeForm} />
           <Route exact path="/export2pdf" component={Export2PdfPage} />
+          <Route component={BasicResumeForm} />
         </Switch>
       </Router>
     </Fragment>
