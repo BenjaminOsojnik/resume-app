@@ -330,6 +330,7 @@ input[type="checkbox" i] {
 .submitted-wrap{
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .submitted-skill{
