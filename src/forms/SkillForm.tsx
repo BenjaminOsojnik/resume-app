@@ -33,24 +33,34 @@ const SkillForm = () => {
 
     return (
         <Fragment>
-            <form onSubmit={e => { e.preventDefault() }}>
-                <label>Skill</label>
-                <input type="text" className={`${warning && skill === '' ? 'warningInput' : '' }`} value={skill} onChange={(event) => setSkill(event.target.value)} /><br />  
-                <label>Level</label>
-                <select className={`${warning && level === 'SelectSkill' ? 'warningInput' : '' }`} value={level} onChange={(event:any) => setLevel(event.target.value)}>
-                    <option value={'SelectLevel'}>Select level</option>
-                    <option value={'Expert'}>Expert</option>
-                    <option value={'Experienced'}>Experienced</option>
-                    <option value={'Skillfull'}>Skillfull</option>
-                    <option value={'Intermediate'}>Intermediate</option>
-                    <option value={'Beginner'}>Begginer</option>
-                </select>
-                <button onClick={handleSubmit}>Save</button>
-                {idState !== undefined && <button onClick={() => dispatch(deleteSkill(id))}>Delete</button>}
-                <button onClick={() => dispatch(SetSkillFormVisilbe(false))}>Cancel</button>
-                <br />
-                <br />
-            </form>
+            <div className="subform" >
+                <form onSubmit={e => { e.preventDefault() }}>
+                    <div className="skill-form">
+                        <div>
+                            <input type="text" placeholder="Skill" className={`${warning && skill === '' ? 'warningInput' : '' }`} value={skill} onChange={(event) => setSkill(event.target.value)} /><br />
+                            {skill.length ?
+                                <label className="text-input-label">Skill</label> :
+                                ""
+                            }
+                        </div>
+
+                        <select className={`select-box${warning && level === 'SelectSkill' ? 'warningInput' : '' }`} value={level} onChange={(event:any) => setLevel(event.target.value)}>
+                            <option value={'SelectLevel'}>Skill level</option>
+                            <option value={'Expert'}>Expert</option>
+                            <option value={'Experienced'}>Experienced</option>
+                            <option value={'Skillfull'}>Skillfull</option>
+                            <option value={'Intermediate'}>Intermediate</option>
+                            <option value={'Beginner'}>Begginer</option>
+                        </select>
+                    </div>
+
+                    <div className="btn-area">
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Add</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteSkill(id))}>Delete</button>}
+                        <button className="remove-btn" onClick={() => dispatch(SetSkillFormVisilbe(false))}>Cancel</button>
+                    </div>
+                </form>
+            </div>
         </Fragment>
     )
 }

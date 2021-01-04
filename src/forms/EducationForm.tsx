@@ -46,47 +46,71 @@ const EducationForm = () => {
 
     return (
         <Fragment>
-            <form onSubmit={e => { e.preventDefault() }}>
-                <label>Degree*</label><br />
-                <input type="text" className={`${warning && degree === '' ? 'warningInput' : '' }`} value={degree} onChange={(event) => setDegree(event.target.value)} /><br />
-                <label>City/Town*</label><br />
-                <input type="text" className={`${warning && city === '' ? 'warningInput' : '' }`} value={city} onChange={(event) => setCity(event.target.value)} /><br />  
-                <label>School*</label><br />
-                <input type="text" className={`${warning && school === '' ? 'warningInput' : '' }`} value={school} onChange={(event) => setSchool(event.target.value)} /><br />  
-                <label>Start date*</label><br />
-                <label>End date*</label><br />
-                <DatePicker
-                    selected={startDate}
-                    onChange={(date: Date) => setStartDate(date)}
-                    dateFormat="MMMM yyyy"
-                    showMonthDropdown
-                    showYearDropdown
-                    showMonthYearPicker
-                    dropdownMode="select"
-                />
-                
-                <DatePicker
-                    disabled={present}
-                    selected={endDate}
-                    onChange={(date: Date) => setEndDate(date)}
-                    dateFormat="MMMM yyyy"
-                    showMonthDropdown
-                    showYearDropdown
-                    showMonthYearPicker
-                    dropdownMode="select"
-                />
-                <label>Present</label>
-                <input type="checkbox" checked={present} onChange={()=> setPresent(!present)}/> 
-                <br/>
-                <label>Description</label><br />
-                <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={description} onChange={(event:any) => setDescription(event.target.value)} /><br />
-                <br />
-                <button onClick={handleSubmit}>Save</button>
-                {idState !== undefined && <button onClick={() => dispatch(deleteEducation(id))}>Delete</button>}
-                <button onClick={() => dispatch(SetEducationFormVisible(false))}>Cancel</button>
-                <br />
-                <br />
-            </form>
+                <div className="subform" >
+                <form onSubmit={e => { e.preventDefault() }} >
+
+                    <input type="text" placeholder="*Degree" className={`${warning && degree === '' ? 'warningInput' : '' }`} value={degree} onChange={(event) => setDegree(event.target.value)} /><br />
+                    {degree.length ?
+                        <label className="text-input-label">Degree</label> :
+                        ""
+                    }
+
+                    <input type="text" placeholder="City/Town" className={`${warning && city === '' ? 'warningInput' : '' }`} value={city} onChange={(event) => setCity(event.target.value)} /><br />
+                    {city.length ?
+                        <label className="text-input-label">City/Town</label> :
+                        ""
+                    }
+
+                    <input type="text" placeholder="School" className={`${warning && school === '' ? 'warningInput' : '' }`} value={school} onChange={(event) => setSchool(event.target.value)} /><br />
+                    {school.length ?
+                        <label className="text-input-label">*School</label> :
+                        ""
+                    }
+
+                    <div className="date-form-section">
+                        <div>
+                            <label className="date-picker">Start date*</label>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={(date: Date) => setStartDate(date)}
+                                dateFormat="MMMM yyyy"
+                                showMonthDropdown
+                                showYearDropdown
+                                showMonthYearPicker
+                                dropdownMode="select"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="date-picker">End date*</label>
+                            <DatePicker
+                                disabled={present}
+                                selected={endDate}
+                                onChange={(date: Date) => setEndDate(date)}
+                                dateFormat="MMMM yyyy"
+                                showMonthDropdown
+                                showYearDropdown
+                                showMonthYearPicker
+                                dropdownMode="select"
+                            />
+                        </div>
+
+                        <div className="current-checkbox">
+                            <input name="current" id="current" type="checkbox" checked={present} onChange={()=> setPresent(!present)}/>
+                            <label htmlFor="current">Present</label>
+                        </div>
+                    </div>
+
+                    <label className="description">Description</label>
+                    <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={description} onChange={(event:any) => setDescription(event.target.value)} />
+
+                    <div className="btn-area">
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Save</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteEducation(id))}>Delete</button>}
+                        <button className="remove-btn" onClick={() => dispatch(SetEducationFormVisible(false))}>Cancel</button>
+                    </div>
+                </form>
+            </div>
         </Fragment>
     )
 }

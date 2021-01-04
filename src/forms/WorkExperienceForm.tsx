@@ -47,47 +47,73 @@ const WorkExperienceForm = () => {
 
     return (
         <Fragment>
-            <form onSubmit={e => { e.preventDefault() }}>
-                <label>Job title*</label><br />
-                <input type="text" className={`${warning && jobTitle === '' ? 'warningInput' : '' }`} value={jobTitle} onChange={(event) => setJobTitle(event.target.value)} /><br />
-                <label>City/Town*</label><br />
-                <input type="text" className={`${warning && city === '' ? 'warningInput' : '' }`} value={city} onChange={(event) => setCity(event.target.value)} /><br />  
-                <label>Employer*</label><br />
-                <input type="text" className={`${warning && employer === '' ? 'warningInput' : '' }`} value={employer} onChange={(event) => setEmployer(event.target.value)} /><br />  
-                <label>Start date*</label><br />
-                <label>End date*</label><br />
-                <DatePicker
-                    selected={startDate}
-                    onChange={(date: Date) => setStartDate(date)}
-                    dateFormat="MMMM yyyy"
-                    showMonthDropdown
-                    showYearDropdown
-                    showMonthYearPicker
-                    dropdownMode="select"
-                />
-                
-                <DatePicker
-                    disabled={present}
-                    selected={endDate}
-                    onChange={(date: Date) => setEndDate(date)}
-                    dateFormat="MMMM yyyy"
-                    showMonthDropdown
-                    showYearDropdown
-                    showMonthYearPicker
-                    dropdownMode="select"
-                />
-                <label>Present</label>
-                <input type="checkbox" checked={present} onChange={()=> setPresent(!present)}/> 
-                <br/>
-                <label>Description</label><br />
-                <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={description} onChange={(event:any) => setDescription(event.target.value)} /><br />
-                <br />
-                <button onClick={handleSubmit}>Save</button>
-                {idState !== undefined && <button onClick={() => dispatch(deleteWorkExperience(id))}>Delete</button>}
-                <button onClick={() => dispatch(SetWorkExperienceFormVisible(false))}>Cancel</button>
-                <br />
-                <br />
-            </form>
+            <div className="subform" >
+                <form onSubmit={e => { e.preventDefault() }}>
+                    <input type="text" placeholder="*Job title" className={`${warning && jobTitle === '' ? 'warningInput' : '' }`} value={jobTitle} onChange={(event) => setJobTitle(event.target.value)} /><br />
+                    {jobTitle.length ?
+                        <label className="text-input-label">*Job title</label> :
+                        ""
+                    }
+
+                    <input type="text" placeholder="*City/Town" className={`${warning && city === '' ? 'warningInput' : '' }`} value={city} onChange={(event) => setCity(event.target.value)} /><br />
+                    {city.length ?
+                        <label className="text-input-label">City/Town*</label> :
+                        ""
+                    }
+
+
+                    <input type="text" placeholder="*Employer" className={`${warning && employer === '' ? 'warningInput' : '' }`} value={employer} onChange={(event) => setEmployer(event.target.value)} /><br />
+                    {employer.length ?
+                        <label className="text-input-label">*Employer</label> :
+                        ""
+                    }
+
+                    <div className="date-form-section">
+                        <div>
+                            <label className="date-picker">Start date*</label>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={(date: Date) => setStartDate(date)}
+                                dateFormat="MMMM yyyy"
+                                showMonthDropdown
+                                showYearDropdown
+                                showMonthYearPicker
+                                dropdownMode="select"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="date-picker">End date*</label>
+                            <DatePicker
+                                disabled={present}
+                                selected={endDate}
+                                onChange={(date: Date) => setEndDate(date)}
+                                dateFormat="MMMM yyyy"
+                                showMonthDropdown
+                                showYearDropdown
+                                showMonthYearPicker
+                                dropdownMode="select"
+                            />
+                        </div>
+
+                        <div className="current-checkbox">
+                            <input name="current" id="current" type="checkbox" checked={present} onChange={()=> setPresent(!present)}/>
+                            <label htmlFor="current">Current</label>
+                        </div>
+                     </div>
+
+                    <label className="description">Description</label>
+                    <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  placeholder="Provide a description of this work position... " value={description} onChange={(event:any) => setDescription(event.target.value)} /><br />
+
+
+                    <div className="btn-area">
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Add</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteWorkExperience(id))}>Delete</button>}
+                        <button className="remove-btn" onClick={() => dispatch(SetWorkExperienceFormVisible(false))}>Cancel</button>
+                    </div>
+
+                </form>
+            </div>
         </Fragment>
     )
 }

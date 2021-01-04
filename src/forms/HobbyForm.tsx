@@ -31,15 +31,21 @@ const HobbyForm = () => {
 
     return (
         <Fragment>
-            <form onSubmit={e => { e.preventDefault() }}>
-                <label>Hobby</label>
-                <input type="text" className={`${warning && hobby === '' ? 'warningInput' : '' }`} value={hobby} onChange={(event) => setHobby(event.target.value)} /><br />  
-                <button onClick={handleSubmit}>Save</button>
-                {idState !== undefined && <button onClick={() => dispatch(deleteHobby(id))}>Delete</button>}
-                <button onClick={() => dispatch(SetHobbyFormVisible(false))}>Cancel</button>
-                <br />
-                <br />
-            </form>
+            <div className="subform" >
+                <form onSubmit={e => { e.preventDefault() }}>
+                    <input type="text" placeholder="*Hobby" className={`${warning && hobby === '' ? 'warningInput' : '' }`} value={hobby} onChange={(event) => setHobby(event.target.value)} /><br />
+                    {hobby.length ?
+                        <label className="text-input-label">Hobby</label> :
+                        ""
+                    }
+
+                    <div className="btn-area">
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Add</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteHobby(id))}>Delete</button>}
+                        <button className="remove-btn" onClick={() => dispatch(SetHobbyFormVisible(false))}>Cancel</button>
+                    </div>
+                </form>
+            </div>
         </Fragment>
     )
 }

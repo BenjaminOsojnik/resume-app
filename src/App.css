@@ -1,42 +1,356 @@
-.App {
-  text-align: center;
+body {
+    background-color: #f6f6f6;
+    color: #0f2423;
+    background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+}
+#title{
+    text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2{
+    text-align: center;
+    color: #13547a;
+    margin-top: 0;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 25px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.main-wrapper-basic{
+    height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.main{
+    width: 100%;
+    max-width: 600px;
+    background-color: white;
+    box-shadow: 0 6px 15px rgba(36, 37, 38, 0.08);
+    border-radius: 16px;
+    padding: 50px;
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-experience form{
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
 }
 
-.warningInput{
-  border: 1px solid red;
+form{
+    width: 300px;
+    margin: auto;
 }
+
+input, label {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+    padding: 0;
+    height: 25px;
+}
+
+label {
+    margin-bottom: 2px;
+}
+
+input[type=text]{
+    border: none;
+    border-bottom: 1px solid #5DBDB7;
+    font-size: 16px;
+    margin-top: 15px;
+    border-top: 1px solid white;
+}
+
+input[type=text]:focus {
+    border-top: none;
+    border-bottom: 2px solid #5DBDB7;
+    outline: none;
+}
+
+.next-btn{
+    padding: 15px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    background-color: #13547a;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid #13547a;
+    cursor: pointer;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+}
+
+.next-btn svg{
+    margin-right: 10px;
+}
+
+form .next-btn:hover{
+    background-color: white;
+    color: #13547a;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: 	 #a4dad6;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: 	 #a4dad6;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: 	 #a4dad6;
+}
+
+.text-input-label{
+    color: #5DBDB7;
+    font-size: 13px;
+    display: block;
+}
+
+label svg{
+    height: 40px;
+    width: 40px;
+    background: #f6f6f6;
+    padding: 35px;
+    display: flex;
+    margin: auto;
+    border-radius: 5px;
+    color: #5DBDB7;
+}
+
+label p{
+    text-align: center;
+    margin: 10px 0 0 0;
+    color: #5DBDB7;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+
+.inputfile + label {
+    cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.profile-img{
+    width: 115px;
+    height: 115px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin: auto;
+    display: flex;
+}
+
+.uploaded-img-wrap{
+    position: relative;
+}
+
+.uploaded-img-wrap span{
+    position: absolute;
+    padding: 0 5px;
+    top: -7px;
+    right: 66px;
+    color: #5DBDB7;
+    font-size: 20px;
+}
+
+h3{
+    margin: 0 0 8px 0;
+    color: #13547a;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+textarea{
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    resize: horizontal;
+    height: 120px!important;
+    width: 100%;
+    border: 1px solid #5DBDB7;
+}
+
+textarea::placeholder {
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 5px;
+}
+
+.item-wrapper{
+    margin-bottom: 15px;
+}
+
+.add-btn{
+    background-color: white;
+    border: none;
+    color: #5DBDB7;
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+    margin: auto;
+}
+
+.date-form-section {
+    display: flex;
+    margin: 35px 0;
+    align-items: flex-end;
+}
+
+.date-picker,
+.description{
+    color: #5DBDB7;
+}
+
+.current-checkbox{
+    display: flex;
+}
+
+.current-checkbox label{
+    margin: 0 0 0 5px;
+}
+
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    appearance: checkbox;
+    box-sizing: border-box;
+    margin: 0;
+    padding: initial;
+    border: initial;
+    width: auto;
+}
+
+.save-btn{
+    padding: 10px;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: #13547a;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid #13547a;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.remove-btn{
+    padding: 10px;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: white;
+    color: grey;
+    font-weight: bold;
+    font-size: 15px;
+    border: 1px solid;
+}
+
+.btn-area{
+    margin-bottom: 20px;
+}
+
+.skill-form{
+    display: flex;
+    height: 42px;
+    margin-bottom: 22px;
+}
+
+.skill-form select{
+    margin-left: 20px;
+    padding: 0 11px;
+    border: none;
+    border-bottom: 1px solid #5DBDB7;
+    background-color: #f6f6f6;
+    color: #5DBDB7;
+    font-size: 16px;
+}
+
+.back-btn{
+    background-color: white;
+    border: none;
+    font-size: 31px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #13547a;
+}
+
+.subform{
+    background-color: #f6f6f6;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.subform input[type=text] {
+    border-top: 1px solid #f6f6f6;
+    background-color: #f6f6f6;
+}
+
+.submitted-wrap{
+    display: flex;
+    justify-content: space-between;
+}
+
+.submitted-skill{
+    justify-content: flex-start;
+}
+
+.submitted-wrap p{
+    margin: 0 0 10px 0 ;
+}
+
+.submitted-main{
+    font-weight: bolder;
+    margin-right: 10px;
+}
+
+.submitted-wrap .submitted-secondary-skill{
+    margin-left: 10px;
+}
+
+.ready-txt{
+    text-align: center;
+}
+
+

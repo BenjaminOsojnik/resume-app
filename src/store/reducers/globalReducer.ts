@@ -152,45 +152,15 @@ export default function globalReducer(state: TGlobalState = initialState, action
             return {...state, workExperiences: workExperiencesTemp, workExperience: emptyWorkExperience}
         }
 
-        case EDIT_EDUCATION_ACTION: {
-            let index = state.educations.map(function(x) {return x.id}).indexOf(action.id)
-            let educationTemp = state.educations[index]
-            return {...state, education: educationTemp, isEducationFormVisible: true}
-        }
-
         case DELETE_EDUCATION_ACTION: {
             let educationsTemp = state.educations.filter(ed => ed.id !== action.id)
             return {...state, education: emptyEducation, isEducationFormVisible: false, educations: educationsTemp}
-        }
-
-        case SUBMIT_EDUCATION: {
-            let educationsTemp = state.educations
-            let index = state.educations.map(function(x) {return x.id}).indexOf(action.education.id)
-            if (index === -1){
-                educationsTemp.push(action.education)
-            }
-            else {
-                educationsTemp[index].city = action.education.city
-                educationsTemp[index].description = action.education.description
-                educationsTemp[index].degree = action.education.degree
-                educationsTemp[index].endDate = action.education.endDate
-                educationsTemp[index].id = action.education.id
-                educationsTemp[index].school = action.education.school
-                educationsTemp[index].startDate = action.education.startDate
-            }
-
-            return {...state, educations: educationsTemp, education: emptyEducation}
         }
 
         case EDIT_EDUCATION_ACTION: {
             let index = state.educations.map(function(x) {return x.id}).indexOf(action.id)
             let educationTemp = state.educations[index]
             return {...state, education: educationTemp, isEducationFormVisible: true}
-        }
-
-        case DELETE_EDUCATION_ACTION: {
-            let educationsTemp = state.educations.filter(ed => ed.id !== action.id)
-            return {...state, education: emptyEducation, isEducationFormVisible: false, educations: educationsTemp}
         }
 
         case SUBMIT_EDUCATION: {
