@@ -29,23 +29,6 @@ const Export2PdfPage = () => {
         doc.setDrawColor(0)
         doc.setFillColor(63, 101, 146)
         doc.rect(0, 0, 70, 300, 'F')
-<<<<<<< HEAD
-        let strings = storeState.profileImage.split(",");
-        switch (strings[0]) {
-            case "data:image/jpeg;base64":
-                doc.addImage(storeState.profileImage, 'JPEG', 7.5, 5, 55, 55)       
-            break;
-            case "data:image/png;base64":
-                doc.addImage(storeState.profileImage, 'PNG', 7.5, 5, 45, 45)  
-            break;
-            default:
-                doc.addImage(storeState.profileImage, 'JPEG', 7.5, 5, 55, 55)  
-            break;
-        }
-        doc.setTextColor(242)
-        doc.setFontSize(14)
-        let y = 70   
-=======
         // doc.circle(7.5,10,45, null)
         // doc.clip()
         let y = 10   
@@ -66,7 +49,6 @@ const Export2PdfPage = () => {
         doc.setTextColor(242)
         doc.setFontSize(14)
         
->>>>>>> styling
 
         doc.setFont('SF-Pro-Text-Bold', "bold")
         doc.text('CONTACT', 6.5, y)
