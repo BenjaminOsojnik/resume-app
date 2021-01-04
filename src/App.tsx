@@ -1,9 +1,10 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, Suspense, lazy} from 'react'
 import './App.css'
 import BasicResumeForm from './forms/BasicResumeForm'
-import AdvancedResumeForm from './forms/AdvancedResumeForm'
 import { BrowserRouter as Router, Route,Switch } from 'react-router-dom'
-import Export2PdfPage from './pages/Export2PdfPage'
+
+const AdvancedResumeForm = lazy(()=> import('./forms/AdvancedResumeForm'))
+const Export2PdfPage = lazy(() => import('./pages/Export2PdfPage') )
 
 function App() {
   return (
@@ -11,8 +12,12 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={BasicResumeForm} />
-          <Route exact path="/advanced" component={AdvancedResumeForm} />
+          <Suspense fallback={<div />}>
+            <Route exact path="/advanced" component={AdvancedResumeForm} />
+          </Suspense>
+          <Suspense fallback={<div />}>
           <Route exact path="/export2pdf" component={Export2PdfPage} />
+          </Suspense>
           <Route component={BasicResumeForm} />
         </Switch>
       </Router>
