@@ -107,8 +107,8 @@ const WorkExperienceForm = () => {
 
 
                     <div className="btn-area">
-                        <button className="save-btn" onClick={handleSubmit}>Add</button>
-                        {idState !== undefined && <button onClick={() => dispatch(deleteWorkExperience(id))}>Delete</button>}
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Add</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteWorkExperience(id))}>Delete</button>}
                         <button className="remove-btn" onClick={() => dispatch(SetWorkExperienceFormVisible(false))}>Cancel</button>
                     </div>
 

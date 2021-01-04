@@ -1,14 +1,16 @@
-import React, {Fragment, useState} from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootReducer } from '../store/reducers'
 import { useHistory } from 'react-router-dom'
-import {editHobby, SetWorkExperienceFormVisible, editWorkExperience, editEducation, SetEducationFormVisible, SetHobbyFormVisible, editSkill, SetSkillFormVisilbe, SetResumeObjective} from '../store/reducers/globalReducer'
+import {SetWorkExperienceFormVisible,SetEducationFormVisible, SetHobbyFormVisible, SetSkillFormVisilbe, SetResumeObjective} from '../store/reducers/globalReducer'
 import TextareaAutosize from 'react-autosize-textarea'
 import WorkExperienceForm from './WorkExperienceForm'
 import EducationForm from './EducationForm'
 import HobbyForm from './HobbyForm'
 import SkillForm from './SkillForm'
+import Moment from 'react-moment'
 import {FiChevronLeft} from 'react-icons/fi'
+import { editEducationAction, editHobbyAction, editSkillAction, editWorkExperienceAction } from '../store/actions/globalActionCreators'
 
 const AdvancedResumeForm = () => {
     const history = useHistory()
@@ -36,9 +38,9 @@ const AdvancedResumeForm = () => {
                         <h2>WORK EXPERIENCE</h2>
                         {workExperiences !== [] &&
                             workExperiences.map((we) => (
-                                <div className="submitted-wrap" key={we.id} onClick={() => dispatch(editWorkExperience(we.id))}>
+                                <div className="submitted-wrap" key={we.id} onClick={() => dispatch(editWorkExperienceAction(we.id ||''))}>
                                     <p className="submitted-main">{we.jobTitle}</p>
-                                    <p className="submitted-secondary">{we.startDate.toISOString()} - {we.endDate.toISOString()}</p>
+                                    <p className="submitted-secondary"><Moment format="MM.YYYY">{we.startDate}</Moment> - <Moment format="MM.YYYY">{we.endDate}</Moment></p>
                                 </div>
                                 ))
                         }
@@ -50,9 +52,9 @@ const AdvancedResumeForm = () => {
                         <h2>EDUCATION & QUALIFICATIONS</h2>
                         {educations !== [] &&
                             educations.map((ed) => (
-                                <div className="submitted-wrap" key={ed.id} onClick={() => dispatch(editEducation(ed.id))}>
+                                <div className="submitted-wrap" key={ed.id} onClick={() => dispatch(editEducationAction(ed.id || ''))}>
                                     <p className="submitted-main" >{ed.degree}</p>
-                                    <p className="submitted-secondary">{ed.startDate.toISOString()} - {ed.endDate.toISOString()}</p>
+                                    <p className="submitted-secondary"><Moment format="MM:YYYY">{ed.startDate}</Moment> - <Moment format="MM:YYYY">{ed.endDate}</Moment></p>
                                 </div>
                                 ))
                         }
@@ -64,7 +66,7 @@ const AdvancedResumeForm = () => {
                         <h2>INTERESTS</h2>
                         {hobbies !== [] &&
                             hobbies.map((h) => (
-                                <div className="submitted-wrap" key={h.id} onClick={() => dispatch(editHobby(h.id))}>
+                                <div className="submitted-wrap" key={h.id} onClick={() => dispatch(editHobbyAction(h.id ||''))}>
                                     <p className="submitted-main">{h.hobby}</p>
                                 </div>
                                 ))
@@ -77,7 +79,7 @@ const AdvancedResumeForm = () => {
                         <h2>SKIILS</h2>
                         {skills !== [] &&
                             skills.map((s) => (
-                                <div className="submitted-wrap submitted-skill" key={s.id} onClick={() => dispatch(editSkill(s.id))}>
+                                <div className="submitted-wrap submitted-skill" key={s.id} onClick={() => dispatch(editSkillAction(s.id || ''))}>
                                     <p className="submitted-main">{s.skill}</p>
                                     <p className="submitted-secondary-skill">{s.level}</p>
                                 </div>

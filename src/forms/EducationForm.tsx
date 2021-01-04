@@ -105,8 +105,8 @@ const EducationForm = () => {
                     <TextareaAutosize rows={2} style={{ boxSizing: 'border-box' }}  value={description} onChange={(event:any) => setDescription(event.target.value)} />
 
                     <div className="btn-area">
-                        <button className="save-btn" onClick={handleSubmit}>Save</button>
-                        {idState !== undefined && <button onClick={() => dispatch(deleteEducation(id))}>Delete</button>}
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Save</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteEducation(id))}>Delete</button>}
                         <button className="remove-btn" onClick={() => dispatch(SetEducationFormVisible(false))}>Cancel</button>
                     </div>
                 </form>

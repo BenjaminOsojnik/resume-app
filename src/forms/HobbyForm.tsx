@@ -40,8 +40,8 @@ const HobbyForm = () => {
                     }
 
                     <div className="btn-area">
-                        <button className="save-btn" onClick={handleSubmit}>Save</button>
-                        {idState !== undefined && <button onClick={() => dispatch(deleteHobby(id))}>Delete</button>}
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Add</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteHobby(id))}>Delete</button>}
                         <button className="remove-btn" onClick={() => dispatch(SetHobbyFormVisible(false))}>Cancel</button>
                     </div>
                 </form>

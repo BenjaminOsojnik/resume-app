@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react'
 import "react-datepicker/dist/react-datepicker.css"
 import {generateGuidG4} from '../functions/generateGuidS4'
-import {deleteSkill, SetHobbyFormVisible, SetSkillFormVisilbe, submitSkill} from '../store/reducers/globalReducer'
+import {deleteSkill, SetSkillFormVisilbe, submitSkill} from '../store/reducers/globalReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootReducer } from '../store/reducers'
 
@@ -55,8 +55,8 @@ const SkillForm = () => {
                     </div>
 
                     <div className="btn-area">
-                        <button className="save-btn" onClick={handleSubmit}>Save</button>
-                        {idState !== undefined && <button onClick={() => dispatch(deleteSkill(id))}>Delete</button>}
+                        {id === '' ? <button className="save-btn" onClick={handleSubmit}>Add</button> : <button className="save-btn" onClick={handleSubmit}>Update</button>}
+                        {idState !== undefined && <button className="remove-btn" onClick={() => dispatch(deleteSkill(id))}>Delete</button>}
                         <button className="remove-btn" onClick={() => dispatch(SetSkillFormVisilbe(false))}>Cancel</button>
                     </div>
                 </form>

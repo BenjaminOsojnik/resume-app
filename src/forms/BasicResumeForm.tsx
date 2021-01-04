@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react'
+import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { TRootReducer } from '../store/reducers'
 import { useHistory } from 'react-router-dom'
@@ -45,7 +45,7 @@ const BasicResumeForm = () => {
                         <div className="profile-img-wrap">
                             {profileImage.length ?
                                 <div className="uploaded-img-wrap">
-                                    <img className="profile-img" src={profileImage}/>
+                                    <img className="profile-img" src={profileImage} alt={'ProfileImage'} />
                                     <span>&#10005;</span>
                                 </div>
                                 :
