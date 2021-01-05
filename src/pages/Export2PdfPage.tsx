@@ -7,6 +7,7 @@ import moment from 'moment'
 import '../icons/user.png'
 import { useHistory } from 'react-router-dom'
 import {FiChevronLeft, FiDownload} from "react-icons/fi";
+import Footer from '../controls/Footer'
 
 const Export2PdfPage = () => {
     
@@ -330,6 +331,7 @@ const Export2PdfPage = () => {
                         <button onClick={() => generatePDF('download')} className="next-btn"><FiDownload />Download .pdf</button>
                 </div>
             </div>
+            <Footer />
         </div>
     )
 }

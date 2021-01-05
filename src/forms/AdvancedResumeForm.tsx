@@ -11,6 +11,7 @@ import SkillForm from './SkillForm'
 import Moment from 'react-moment'
 import {FiChevronLeft} from 'react-icons/fi'
 import { editEducationAction, editHobbyAction, editSkillAction, editWorkExperienceAction } from '../store/actions/globalActionCreators'
+import Footer from '../controls/Footer'
 
 const AdvancedResumeForm = () => {
     const history = useHistory()
@@ -92,6 +93,7 @@ const AdvancedResumeForm = () => {
                     <button onClick={() => history.push('../export2pdf')} className="next-btn">Next</button>
                 </form>
             </div>
+            <Footer />
         </div>
 
     )

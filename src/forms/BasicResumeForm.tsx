@@ -4,6 +4,7 @@ import { TRootReducer } from '../store/reducers'
 import { useHistory } from 'react-router-dom'
 import {SubmitBasicInformation} from '../store/reducers/globalReducer'
 import {BiImageAdd} from "react-icons/bi"
+import Footer from '../controls/Footer'
 
 const BasicResumeForm = () => {
     const history = useHistory()
@@ -119,7 +120,9 @@ const BasicResumeForm = () => {
                     <button className="next-btn" onClick={handleSubmit}>Next</button>
                 </form>
             </div>
+            <Footer />
         </div>
+        
     )
 }
 export default BasicResumeForm

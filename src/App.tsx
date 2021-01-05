@@ -25,6 +25,7 @@ function App() {
           <Route component={BasicResumeForm} />
         </Switch>
       </Router>
+      
     </Fragment>
   )
 }
