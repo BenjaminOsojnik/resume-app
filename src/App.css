@@ -19,17 +19,12 @@ h2{
 }
 
 .main-wrapper{
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     padding: 25px;
 }
 
-.main-wrapper-basic{
-    height: 100vh;
-}
 
 .main{
     width: 100%;
@@ -355,7 +350,8 @@ input[type="checkbox" i] {
 }
 
 .footer{
-    position: fixed;
-    bottom: 20px;
+    display:flex;
+    justify-content: center;
+    text-align: center;
     color: white;
 }

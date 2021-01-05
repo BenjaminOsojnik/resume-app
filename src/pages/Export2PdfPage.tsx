@@ -321,18 +321,20 @@ const Export2PdfPage = () => {
     }
     
     return (
-        <div className="main-wrapper">
-            <div className="main">
-                <div id="preview">
-                    <h1 id="title">{storeState.firstName} {storeState.lastName}</h1>
-                    <p className="ready-txt">Your resume is ready!</p>
-                    <button onClick={() => history.push('./advanced')} className="back-btn"> <FiChevronLeft /> </button>
-                        <button onClick={() => generatePDF('preview')} className="next-btn"><FiDownload />Preview .pdf</button>
-                        <button onClick={() => generatePDF('download')} className="next-btn"><FiDownload />Download .pdf</button>
+        <div>
+            <div className="main-wrapper">
+                <div className="main">
+                    <div id="preview">
+                        <h1 id="title">{storeState.firstName} {storeState.lastName}</h1>
+                        <p className="ready-txt">Your resume is ready!</p>
+                        <button onClick={() => history.push('./advanced')} className="back-btn"> <FiChevronLeft /> </button>
+                            <button onClick={() => generatePDF('preview')} className="next-btn"><FiDownload />Preview .pdf</button>
+                            <button onClick={() => generatePDF('download')} className="next-btn"><FiDownload />Download .pdf</button>
+                    </div>
                 </div>
             </div>
             <Footer />
-        </div>
+         </div>
     )
 }
 export default Export2PdfPage

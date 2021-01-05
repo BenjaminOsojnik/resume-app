@@ -37,88 +37,90 @@ const BasicResumeForm = () => {
 
 
     return (
-        <div className="main-wrapper main-wrapper-basic">
-            <div className="main">
-                <h2>1. GENERAL</h2>
-                <form onSubmit={handleSubmit}>
-                    <input type="file"  name="file" id="file" className="inputfile" accept="image/x-png,image/gif,image/jpeg" onChange={handleFileSelect}/><br />
-                    <label htmlFor="file">
-                        <div className="profile-img-wrap">
+        <div>
+            <div className="main-wrapper main-wrapper-basic">
+                <div className="main">
+                    <h2>1. GENERAL</h2>
+                    <form onSubmit={handleSubmit}>
+                        <input type="file"  name="file" id="file" className="inputfile" accept="image/x-png,image/gif,image/jpeg" onChange={handleFileSelect}/><br />
+                        <label htmlFor="file">
+                            <div className="profile-img-wrap">
+                                {profileImage.length ?
+                                    <div className="uploaded-img-wrap">
+                                        <img className="profile-img" src={profileImage} alt={'ProfileImage'} />
+                                        <span>&#10005;</span>
+                                    </div>
+                                    :
+                                    <BiImageAdd/>
+                                }
+                            </div>
                             {profileImage.length ?
-                                <div className="uploaded-img-wrap">
-                                    <img className="profile-img" src={profileImage} alt={'ProfileImage'} />
-                                    <span>&#10005;</span>
-                                </div>
+                                <p>Change image</p>
                                 :
-                                <BiImageAdd/>
+                                <p>Upload profile image</p>
                             }
-                        </div>
-                        {profileImage.length ?
-                            <p>Change image</p>
-                            :
-                            <p>Upload profile image</p>
+                        </label>
+
+                        <br />
+                        <input type="text" placeholder="First name*" className={`${warning && firstName === '' ? 'warningInput' : '' }`} value={firstName} onChange={(event) => setFirstName(event.target.value)} /><br />
+                        {firstName.length ?
+                            <label className="text-input-label">First name</label> :
+                            ""
                         }
-                    </label>
 
-                    <br />
-                    <input type="text" placeholder="First name*" className={`${warning && firstName === '' ? 'warningInput' : '' }`} value={firstName} onChange={(event) => setFirstName(event.target.value)} /><br />
-                    {firstName.length ?
-                        <label className="text-input-label">First name</label> :
-                        ""
-                    }
+                        <br />
+                        <input type="text" placeholder="Last name*" className={`${warning && lastName === '' ? 'warningInput' : '' }`} value={lastName} onChange={(event) => setLastName(event.target.value)} /><br />
+                        {lastName.length ?
+                            <label className="text-input-label">Last name</label> :
+                            ""
+                        }
 
-                    <br />
-                    <input type="text" placeholder="Last name*" className={`${warning && lastName === '' ? 'warningInput' : '' }`} value={lastName} onChange={(event) => setLastName(event.target.value)} /><br />
-                    {lastName.length ?
-                        <label className="text-input-label">Last name</label> :
-                        ""
-                    }
+                        <br />
 
-                    <br />
+                        <input type="text" placeholder="Email address*" className={`${warning && !email.includes('@' && '.') ? 'warningInput' : '' }`} value={email} onChange={(event) => setEmail(event.target.value)} /><br />
+                        {email.length ?
+                            <label className="text-input-label">Email address</label> :
+                            ""
+                        }
 
-                    <input type="text" placeholder="Email address*" className={`${warning && !email.includes('@' && '.') ? 'warningInput' : '' }`} value={email} onChange={(event) => setEmail(event.target.value)} /><br />
-                    {email.length ?
-                        <label className="text-input-label">Email address</label> :
-                        ""
-                    }
+                        <br />
 
-                    <br />
+                        <input type="text" placeholder="Phone number" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} /><br />
+                        {phoneNumber.length ?
+                            <label className="text-input-label">Phone number</label> :
+                            ""
+                        }
 
-                    <input type="text" placeholder="Phone number" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)} /><br />
-                    {phoneNumber.length ?
-                        <label className="text-input-label">Phone number</label> :
-                        ""
-                    }
-
-                    <br />
+                        <br />
 
 
-                    <input type="text" placeholder="Address" value={address} onChange={(event) => setAddress(event.target.value)} /><br />
-                    {address.length ?
-                        <label className="text-input-label">Address</label> :
-                        ""
-                    }
+                        <input type="text" placeholder="Address" value={address} onChange={(event) => setAddress(event.target.value)} /><br />
+                        {address.length ?
+                            <label className="text-input-label">Address</label> :
+                            ""
+                        }
 
-                    <br />
+                        <br />
 
-                    <input type="text" placeholder="Postal code" value={zipCode} onChange={(event) => setZipCode(event.target.value)} /><br />
-                    {zipCode.length ?
-                        <label className="text-input-label">Postal code</label> :
-                        ""
-                    }
+                        <input type="text" placeholder="Postal code" value={zipCode} onChange={(event) => setZipCode(event.target.value)} /><br />
+                        {zipCode.length ?
+                            <label className="text-input-label">Postal code</label> :
+                            ""
+                        }
 
-                    <br />
+                        <br />
 
-                    <input type="text" placeholder="Town/City" value={city} onChange={(event) => setCity(event.target.value)} /><br />
-                    {city.length ?
-                        <label className="text-input-label">City/Town</label> :
-                        ""
-                    }
+                        <input type="text" placeholder="Town/City" value={city} onChange={(event) => setCity(event.target.value)} /><br />
+                        {city.length ?
+                            <label className="text-input-label">City/Town</label> :
+                            ""
+                        }
 
-                    <br />
+                        <br />
 
-                    <button className="next-btn" onClick={handleSubmit}>Next</button>
-                </form>
+                        <button className="next-btn" onClick={handleSubmit}>Next</button>
+                    </form>
+                </div>
             </div>
             <Footer />
         </div>
