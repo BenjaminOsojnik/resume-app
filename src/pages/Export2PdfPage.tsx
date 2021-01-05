@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react'
+import React from 'react'
 import jsPDF from 'jspdf'
 import store from '../store/store'
 import '../fonts/SF-Pro-normal.js'
@@ -326,10 +326,8 @@ const Export2PdfPage = () => {
                     <h1 id="title">{storeState.firstName} {storeState.lastName}</h1>
                     <p className="ready-txt">Your resume is ready!</p>
                     <button onClick={() => history.push('./advanced')} className="back-btn"> <FiChevronLeft /> </button>
-                    <Suspense fallback={<br />}>
                         <button onClick={() => generatePDF('preview')} className="next-btn"><FiDownload />Preview .pdf</button>
                         <button onClick={() => generatePDF('download')} className="next-btn"><FiDownload />Download .pdf</button>
-                    </Suspense>
                 </div>
             </div>
         </div>
